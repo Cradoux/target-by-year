@@ -22,7 +22,7 @@ app.layout = html.Div(
             {'label': 'Max pChEMBL value', 'value': 'best_pchembl'},
             {'label': 'Max LLE', 'value': 'best_lle'}
         ],
-        value='best_pchembl'
+        value='best_lle'
     )
     ], className='row'),
     html.Div([
