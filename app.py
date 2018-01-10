@@ -79,7 +79,7 @@ def update_figure(selected_year,x_axis_type):
             legend={'orientation':"h",'y':20},
             hovermode='closest',
             width=800,
-            height=800,
+            height=700,
             showlegend=True,
         )
     }
