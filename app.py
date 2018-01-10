@@ -46,9 +46,14 @@ app.layout = html.Div(
     [dash.dependencies.Input('year-slider', 'value'),
      dash.dependencies.Input('radio', 'value')])
 def update_figure(selected_year,x_axis_type):
+    '''
+    Updates plot
+    :param selected_year:
+    :param x_axis_type:
+    :return:
+    '''
 
     traces = []
-    axis_label_dict = {'best_lle':'Maximum LLE achieved to date', 'best_pchembl':'Best pChEMBL achieved to date'}
     for c in df['class'].unique():
         dataset_by_year = df[df['year'] == selected_year]
         dataset_by_year_and_class = dataset_by_year[dataset_by_year['class'] == c]
@@ -73,8 +78,8 @@ def update_figure(selected_year,x_axis_type):
             margin={'l': 80, 'b': 40, 't': 10, 'r': 0},
             legend={'x': 1500, 'y': 1},
             hovermode='closest',
-            width=1100,
-            height=600,
+            width=800,
+            height=500,
             showlegend=True,
         )
     }
