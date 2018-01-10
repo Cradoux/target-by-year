@@ -37,7 +37,7 @@ app.layout = html.Div(
             marks={str(year): str(year) for year in df['year'].unique() if year % 5 == 0}
         )
         ],className='row')]
-    ,className='container')
+    )
 
 
 
