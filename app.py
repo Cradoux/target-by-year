@@ -68,12 +68,12 @@ def update_figure(selected_year,x_axis_type):
     return {
         'data': traces,
         'layout': go.Layout(
-            xaxis={'title': 'Maximum achieved to date', 'range':[4,11]},
+            xaxis={'title': 'Maximum achieved to date', 'range':[0,15]},
             yaxis={'title': 'Cumulative Sum of Compounds','type':'log','range':[-1,6]},
             margin={'l': 80, 'b': 40, 't': 10, 'r': 0},
             legend={'x': 1500, 'y': 1},
             hovermode='closest',
-            width=1000,
+            width=1100,
             height=600,
             showlegend=True,
         )
