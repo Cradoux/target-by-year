@@ -36,7 +36,7 @@ app.layout = html.Div(
             updatemode='drag',
             marks={str(year): str(year) for year in df['year'].unique() if year % 5 == 0}
         )
-        ],className='row')]
+        ],className='eleven columns')]
     )
 
 
@@ -75,7 +75,7 @@ def update_figure(selected_year,x_axis_type):
         'layout': go.Layout(
             xaxis={'title': 'Maximum achieved to date', 'range':[0,15]},
             yaxis={'title': 'Cumulative Sum of Compounds','type':'log','range':[-1,6]},
-            margin={'l': 80, 'b': 50, 't': 20, 'r': 20},
+            #margin={'l': 80, 'b': 50, 't': 20, 'r': 20},
             legend={'orientation':"h",'y':20},
             hovermode='closest',
             width=800,
@@ -88,8 +88,8 @@ def update_figure(selected_year,x_axis_type):
 external_css = ["https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css",
                 "//fonts.googleapis.com/css?family=Raleway:400,300,600",
                 "//fonts.googleapis.com/css?family=Dosis:Medium",
-                "https://codepen.io/mikesmith1611/pen/QOKgpG.css",
-                "https://cdn.rawgit.com/plotly/dash-app-stylesheets/0e463810ed36927caf20372b6411690692f94819/dash-drug-discovery-demo-stylesheet.css"]
+                "https://codepen.io/mikesmith1611/pen/QOKgpG.css"]#,
+                #"https://cdn.rawgit.com/plotly/dash-app-stylesheets/0e463810ed36927caf20372b6411690692f94819/dash-drug-discovery-demo-stylesheet.css"]
 
 for css in external_css:
     app.css.append_css({"external_url": css})
