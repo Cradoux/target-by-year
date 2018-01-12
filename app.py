@@ -24,7 +24,7 @@ app.layout = html.Div(
         ],
         value='best_lle'
     )
-    ], className='row'),
+    ], className='row eleven columns'),
     html.Div([
         dcc.Slider(
             id='year-slider',
@@ -64,7 +64,7 @@ def update_figure(selected_year,x_axis_type):
             mode='markers',
             opacity=0.7,
             marker={
-                'size': [(x+1)*5 for x in dataset_by_year_and_class['best_phase']],
+                'size': 10,#[(x+1)*5 for x in dataset_by_year_and_class['best_phase']],
                 'line': {'width': 0.5, 'color': 'white'}
             },
             name=c
@@ -75,8 +75,8 @@ def update_figure(selected_year,x_axis_type):
         'layout': go.Layout(
             xaxis={'title': 'Maximum achieved to date', 'range':[0,15]},
             yaxis={'title': 'Cumulative Sum of Compounds','type':'log','range':[-1,6]},
-            #margin={'l': 80, 'b': 50, 't': 20, 'r': 20},
-            legend={'orientation':"h",'y':20},
+            margin={'l': 50, 'b': 0, 't': 0, 'r':0},
+            legend={'orientation':"h",'y':-0.12 },
             hovermode='closest',
             width=800,
             height=700,
