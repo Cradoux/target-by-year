@@ -13,7 +13,7 @@ server = app.server
 
 app.layout = html.Div(
     [html.Div([
-        dcc.Graph(id='graph-with-slider',animate=True),
+        dcc.Graph(id='graph-with-slider',animate=True, style={'height':'75vh'}),
     ],className='row'),
     html.Div([
         dcc.RadioItems(
@@ -35,11 +35,21 @@ app.layout = html.Div(
             vertical=False,
             updatemode='drag',
             marks={str(year): str(year) for year in df['year'].unique() if year % 5 == 0}
-        )
-        ],className='eleven columns')]
-    )
+        ),
 
-
+        ],className='eleven columns',  style={'padding-bottom':'20px'}),
+        # html.Div([
+        #     html.Iframe(
+        #         # enable all sandbox features
+        #         # see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+        #         # this prevents javascript from running inside the iframe
+        #         # and other things security reasons
+        #         id='chembl_widget',
+        #         src="http://chembl-glados.herokuapp.com/target_report_card/CHEMBL3038470/embed/name_and_classification/",
+        #         style={'width': '800px', 'height': '300px'}
+        #     )
+        # ]),
+    ])
 
 @app.callback(
     dash.dependencies.Output('graph-with-slider', 'figure'),
@@ -57,15 +67,16 @@ def update_figure(selected_year,x_axis_type):
     for c in df['class'].unique():
         dataset_by_year = df[df['year'] == selected_year]
         dataset_by_year_and_class = dataset_by_year[dataset_by_year['class'] == c]
+
         traces.append(go.Scatter(
             x=dataset_by_year_and_class[x_axis_type],
             y=dataset_by_year_and_class['cumsum'],
             text=dataset_by_year_and_class['target'],
+            #text=[(int(x)+1)*5 for x in dataset_by_year_and_class['drug']],
             mode='markers',
             opacity=0.7,
             marker={
-                'size': 10,#[(x+1)*5 for x in dataset_by_year_and_class['best_phase']],
-                'line': {'width': 0.5, 'color': 'white'}
+                'size': [(x+1)*5 for x in dataset_by_year_and_class['best_phase_for_ind']]
             },
             name=c
         ))
@@ -75,11 +86,9 @@ def update_figure(selected_year,x_axis_type):
         'layout': go.Layout(
             xaxis={'title': 'Maximum achieved to date', 'range':[0,15]},
             yaxis={'title': 'Cumulative Sum of Compounds','type':'log','range':[-1,6]},
-            margin={'l': 50, 'b': 0, 't': 0, 'r':0},
-            legend={'orientation':"h",'y':-0.12 },
+            margin={'l': 50, 'b': 0, 't': 10, 'r':0},
+            legend={'orientation':"h",'y':-0.17 },
             hovermode='closest',
-            width=800,
-            height=700,
             showlegend=True,
         )
     }
