@@ -45,7 +45,7 @@ app.layout = html.Div(
         #         # this prevents javascript from running inside the iframe
         #         # and other things security reasons
         #         id='chembl_widget',
-        #         src="http://chembl-glados.herokuapp.com/target_report_card/CHEMBL3038470/embed/name_and_classification/",
+        #         src="http://chembl-glados.herokuapp.com/target_report_card/CHEMBL204/embed/approved_drugs_clinical_candidates/",
         #         style={'width': '800px', 'height': '300px'}
         #     )
         # ]),
@@ -84,7 +84,7 @@ def update_figure(selected_year,x_axis_type):
     return {
         'data': traces,
         'layout': go.Layout(
-            xaxis={'title': 'Maximum achieved to date', 'range':[0,15]},
+            xaxis={'title': 'Maximum achieved to date', 'range':[0,17]},
             yaxis={'title': 'Cumulative Sum of Compounds','type':'log','range':[-1,6]},
             margin={'l': 50, 'b': 0, 't': 10, 'r':0},
             legend={'orientation':"h",'y':-0.17 },
